@@ -1,5 +1,6 @@
 package com.example.aluno.ordernumbers;
 
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText mEdit;
     Button mButton1;
+    Button mButton2;
     TextView textView;
 
     @Override
@@ -27,9 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mEdit = (EditText)findViewById(R.id.editText);
         mButton1 = (Button)findViewById(R.id.button1);
+        mButton2 = (Button)findViewById(R.id.button2);
         textView = (TextView)findViewById(R.id.textView);
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         mButton1.setOnClickListener(this);
+        mButton2.setOnClickListener(this);
     }
 
     @Override
@@ -59,19 +67,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String numbers = mEdit.getText().toString();
 
-        String[] parts = numbers.split(" ");
+        String str = "Error";
 
-        ArrayList<Integer> n1 = new ArrayList<Integer>();
+        switch (v.getId()) {
+            case R.id.button1:
 
-        for(int n = 0; n < parts.length; n++) {
-            n1.add(Integer.parseInt(parts[n]));
+                String[] parts = numbers.split(" ");
+
+                ArrayList<Integer> n1 = new ArrayList<Integer>();
+
+                for(int n = 0; n < parts.length; n++) {
+                    n1.add(Integer.parseInt(parts[n]));
+                }
+
+                Collections.sort(n1);
+
+                str = Arrays.toString(n1.toArray());
+
+                break;
+
+            case R.id.button2:
+
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+                str = Send.send(numbers);
+
+                break;
         }
 
-        Collections.sort(n1);
-
-        String str = Arrays.toString(n1.toArray());
-
         textView.setText(str);
-
     }
 }
