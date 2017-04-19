@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText mEdit;
     Button mButton1;
     Button mButton2;
+    Button mButton3;
     TextView textView;
 
     @Override
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEdit = (EditText)findViewById(R.id.editText);
         mButton1 = (Button)findViewById(R.id.button1);
         mButton2 = (Button)findViewById(R.id.button2);
+        mButton3 = (Button)findViewById(R.id.button3);
         textView = (TextView)findViewById(R.id.textView);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mButton1.setOnClickListener(this);
         mButton2.setOnClickListener(this);
+        mButton3.setOnClickListener(this);
     }
 
     @Override
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String str = "Error";
 
         switch (v.getId()) {
+
             case R.id.button1:
 
                 String[] parts = numbers.split(" ");
@@ -91,6 +94,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                 StrictMode.setThreadPolicy(policy);
                 str = Send.send(numbers);
+
+                break;
+
+            case R.id.button3:
+
+                policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+                str = Send2.send(numbers);
 
                 break;
         }

@@ -11,18 +11,19 @@
         android:inputType="text"
         android:ems="10"
         android:id="@+id/editText"
+        android:text="5 42 3 2 1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:text="5 42 3 2 1" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Local Order"
+        android:text="Local"
         android:id="@+id/button1"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="136dp"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,16 +32,23 @@
         android:text="Odered Array"
         android:id="@+id/textView"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cloud Order"
+        android:text=" Server 2"
+        android:id="@+id/button3"
+        android:layout_alignTop="@+id/button1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Server 1"
         android:id="@+id/button2"
-        android:layout_below="@+id/button1"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignStart="@+id/button1" />
+        android:layout_alignTop="@+id/button1"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
